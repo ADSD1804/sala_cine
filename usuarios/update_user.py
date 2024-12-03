@@ -21,5 +21,5 @@ def actualizar_usuario(cedula, nuevo_nombre = None, nuevo_correo = None, nuevas_
     if resultado.matched_count > 0:
         print("Usuario actualizado exitosamente")
     else:
-        print("El usuario no se encontró usuario a actualizar")
+        print("El usuario no se encontró en la base de datos")
             

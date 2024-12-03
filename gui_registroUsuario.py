@@ -11,7 +11,7 @@ database = conexion["cine"]
 coleccion = database["usuario"]
 
 ventana = tk.Tk()
-ventana.title("Cine")
+ventana.title("Registro de Usuario")
 ventana.geometry("600x500")
 
 tk.Label(ventana, text="Creación de usuario nuevo").pack()
@@ -48,7 +48,6 @@ def agregar_usuario():
     messagebox.showinfo("Éxito", "Usuario registrado con éxito.")
     
 def eliminar_usuario():
-    
     cedula_eliminar = cedula.get()
     borrar_usuario(cedula_eliminar)
     messagebox.showinfo("Éxito", "Usuario borrado con éxito.")
@@ -56,4 +55,10 @@ def eliminar_usuario():
 tk.Button(ventana, text="Ingresar", command = agregar_usuario).pack()
 tk.Button(ventana, text="Eliminar", command = eliminar_usuario).pack()
 
-ventana.mainloop()
+ventana.withdraw()
+
+def cerrar_ventana():
+    ventana.withdraw()  
+
+boton_cerrar = tk.Button(ventana, text="Cerrar", command=cerrar_ventana)
+boton_cerrar.pack()

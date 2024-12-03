@@ -50,4 +50,10 @@ def actualizar_datos():
 
 tk.Button(ventana, text="Actualizar Usuario", command= actualizar_datos).pack()
 
-ventana.mainloop()
+ventana.withdraw()
+
+def cerrar_ventana():
+    ventana.withdraw() 
+
+boton_cerrar = tk.Button(ventana, text="Cerrar", command=cerrar_ventana)
+boton_cerrar.pack()

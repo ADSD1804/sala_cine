@@ -5,3 +5,17 @@ conexion = MongoClient("mongodb+srv://Andredavid:adsd1804@cluster0.zvbp2.mongodb
 database = conexion["cine"]
 
 coleccion = database["pelicula"]
+
+def ingresar_pelicula(codigo, nombre, genero, hora_funcion, duracion, entradas_disponibles):
+
+    documento = {
+        "codigo": codigo,
+        "nombre": nombre,
+        "genero": genero,
+        "hora_funcion": hora_funcion,
+        "duracion": duracion,
+        "entradas_disponibles": entradas_disponibles
+    }
+
+    coleccion.insert_one(documento)
+    

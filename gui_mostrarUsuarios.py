@@ -6,7 +6,7 @@ database = conexion["cine"]
 coleccion = database["usuario"]
 
 ventana = tk.Tk()
-ventana.title("Actualizar Usuario")
+ventana.title("Mostrar Usuarios")
 ventana.geometry("400x400")
 
 def mostrar_todos_usuarios():
@@ -30,4 +30,10 @@ def mostrar_todos_usuarios():
 boton_mostrar_todos = tk.Button(ventana, text="Mostrar Todos los Usuarios", command=mostrar_todos_usuarios)
 boton_mostrar_todos.pack()
 
-ventana.mainloop()
+ventana.withdraw()
+
+def cerrar_ventana():
+    ventana.withdraw()  # Oculta la ventana
+
+boton_cerrar = tk.Button(ventana, text="Cerrar", command=cerrar_ventana)
+boton_cerrar.pack()
