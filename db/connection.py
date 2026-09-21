@@ -1,18 +1,13 @@
 import os
-import ssl
 import libsql_client
 from dotenv import load_dotenv
-import certifi
-
-ssl.create_default_context(cafile=certifi.where())
-
 
 load_dotenv()
 
 _client = None
 
 
-def getClient():
+def get_client():
     global _client
 
     if _client is None:
@@ -38,14 +33,12 @@ def getClient():
 
 
 def test_connection():
-    client = getClient()
+    client = get_client()
 
     try:
         client.execute("SELECT 1")
-        print("Conexión con la base de datos establecida correctamente.")
         return True
 
     except Exception as error:
-        print("Error al conectar con la base de datos:")
         print(error)
         return False

@@ -1,4 +1,4 @@
-from db.connection import getClient
+from db.connection import get_client
 
 class UsuarioRepository:
 
@@ -8,7 +8,7 @@ class UsuarioRepository:
     }
 
     def __init__(self):
-        self.client = getClient()
+        self.client = get_client()
 
     def find_all(self):
         query = self.client.execute(
