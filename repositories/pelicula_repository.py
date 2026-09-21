@@ -29,7 +29,7 @@ class PeliculaRepository:
 
         return [dict(zip(query.columns, row)) for row in query.rows]
 
-    def find_by_codigo(self, codigo):
+    def find_by_code(self, codigo):
         query = self.client.execute(
             """
             SELECT
@@ -71,9 +71,7 @@ class PeliculaRepository:
             [codigo, nombre, genero, hora_funcion, duracion, entradas_disponibles],
         )
 
-        pelicula_id = query.rows[0][0]
-
-        return self.find_by_codigo(pelicula_id)
+        return self.find_by_code(codigo)
 
     def update(self, codigo, campos):
 
@@ -100,11 +98,11 @@ class PeliculaRepository:
             valores,
         )
 
-        return self.find_by_codigo(codigo)
+        return self.find_by_code(codigo)
 
     def delete(self, codigo):
 
-        pelicula = self.find_by_codigo(codigo)
+        pelicula = self.find_by_code(codigo)
 
         if pelicula is None:
             return False
