@@ -1,5 +1,6 @@
 from repositories.pelicula_repository import PeliculaRepository
 
+
 def test_crear_peliculas():
     repo = PeliculaRepository()
 
@@ -17,15 +18,16 @@ def test_crear_peliculas():
 
     repo.delete(codigo)
 
+
 def test_buscar_pelicula():
     repo = PeliculaRepository()
-    
+
     codigo = "1001"
-    
+
     repo.create(codigo, "Pelicula por codigo", "Ficción", "18:00", 100, 50)
-    
+
     pelicula = repo.find_by_code(codigo)
-    
+
     assert pelicula is not None
     assert pelicula["codigo"] == codigo
     assert pelicula["nombre"] == "Pelicula por codigo"
@@ -33,8 +35,9 @@ def test_buscar_pelicula():
     assert pelicula["hora_funcion"] == "18:00"
     assert pelicula["duracion"] == 100
     assert pelicula["entradas_disponibles"] == 50
-    
+
     repo.delete(codigo)
+
 
 def test_actualizar_pelicula():
 
@@ -44,7 +47,9 @@ def test_actualizar_pelicula():
 
     repo.create(codigo, "Pelicula a actualizar", "Acción", "17:00", 100, 60)
 
-    pelicula_actualizada = repo.update(codigo, {"nombre": "Pelicula 5", "genero": "Fantasía"})
+    pelicula_actualizada = repo.update(
+        codigo, {"nombre": "Pelicula 5", "genero": "Fantasía"}
+    )
 
     assert pelicula_actualizada is not None
     assert pelicula_actualizada["codigo"] == codigo
@@ -55,6 +60,7 @@ def test_actualizar_pelicula():
     assert pelicula_actualizada["entradas_disponibles"] == 60
 
     repo.delete(codigo)
+
 
 def test_borrar_pelicula():
 
@@ -68,4 +74,3 @@ def test_borrar_pelicula():
 
     assert pelicuna_eliminada is True
     assert repo.find_by_code(codigo) is None
-
